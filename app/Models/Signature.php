@@ -17,7 +17,7 @@ class Signature extends Model
         'status'
     ];
 
-    protected $cats = [
+    protected $casts = [
         'status' => SignatureStatus::class
     ];
 
