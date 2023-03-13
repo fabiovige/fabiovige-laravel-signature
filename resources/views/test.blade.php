@@ -3,8 +3,8 @@
         <h3>header</h3>
     </x-slot>
     <ol>
-        <li>Nome: {{ auth()->user()->name }}</li>
-        <li>Documento: {{ auth()->user()->client->document }}</li>
-        <li>Status da assinatura: {{ auth()->user()->client->signatures->first()->status->name }}</li>
+        <li>Nome: {{ $name }}</li>
+        <li>Documento: {{ $document }}</li>
+        <li>Status da assinatura: {{ $status }}</li>
     </ol>
 </x-app-layout>
