@@ -1,6 +1,8 @@
 <?php
 
 use App\Enums\SignatureStatus;
+use App\Http\Controllers\EmployeeAddressController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignatureController;
 use App\Models\Plan;
@@ -36,3 +38,7 @@ require __DIR__.'/auth.php';
 Route::get('/test', [SignatureController::class, 'index']);
 
 Route::match(['POST', 'PUT', 'GET'],'/routes', fn() => 'teste');
+
+Route::resource('employee', EmployeeController::class);
+
+Route::resource('employee.address', EmployeeAddressController::class);
