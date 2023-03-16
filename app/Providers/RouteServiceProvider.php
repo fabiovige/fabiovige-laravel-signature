@@ -24,6 +24,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->configureVerbs();
         $this->configureRateLimiting();
 
         $this->routes(function () {
@@ -44,5 +45,13 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+    private function configureVerbs()
+    {
+        Route::resourceVerbs([
+            'create' => 'inserir',
+            'edit' => 'editar',
+        ]);
     }
 }

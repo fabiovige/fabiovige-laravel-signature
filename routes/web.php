@@ -39,6 +39,13 @@ Route::get('/test', [SignatureController::class, 'index']);
 
 Route::match(['POST', 'PUT', 'GET'],'/routes', fn() => 'teste');
 
-Route::resource('employee', EmployeeController::class);
+Route::resource('funcionario', EmployeeController::class)
+    ->parameters([
+        'funcionario' => 'employee'
+    ]);
 
-Route::resource('employee.address', EmployeeAddressController::class);
+Route::resource('funcionario.endereco', EmployeeAddressController::class)
+    ->parameters([
+        'funcionario' => 'employee',
+        'endereco' => 'address'
+    ])->except(['index', 'destroy']);

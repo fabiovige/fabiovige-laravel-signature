@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
-        //
+        echo 'inserir';
     }
 
     /**
