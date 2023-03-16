@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkToken:general-token')->only('index');
+        $this->middleware('checkToken:simple-token')->only('create');
+    }
+
     /**
      * Display a listing of the resource.
      */
