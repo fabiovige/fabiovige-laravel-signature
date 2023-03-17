@@ -60,4 +60,5 @@ Route::resource('plan', PlanController::class)
     ->withoutMiddleware([
         TrustProxies::class,
         VerifyCsrfToken::class
-]);
+    ])
+    ->missing(fn()=> redirect()->route('plan.index'));
