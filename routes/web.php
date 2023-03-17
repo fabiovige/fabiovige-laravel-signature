@@ -3,8 +3,11 @@
 use App\Enums\SignatureStatus;
 use App\Http\Controllers\EmployeeAddressController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignatureController;
+use App\Http\Middleware\TrustProxies;
+use App\Http\Middleware\VerifyCsrfToken;
 use App\Models\Plan;
 use Illuminate\Support\Facades\Route;
 
@@ -52,3 +55,9 @@ Route::resource('funcionario.endereco', EmployeeAddressController::class)
         'funcionario' => 'employee',
         'endereco' => 'address'
     ])->except(['index', 'destroy']);
+
+Route::resource('plan', PlanController::class)
+    ->withoutMiddleware([
+        TrustProxies::class,
+        VerifyCsrfToken::class
+]);
