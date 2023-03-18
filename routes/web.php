@@ -61,4 +61,6 @@ Route::resource('plan', PlanController::class)
         TrustProxies::class,
         VerifyCsrfToken::class
     ])
-    ->missing(fn()=> redirect()->route('plan.index'));
+    ->parameters([
+        'plan' => 'plan:cod'
+    ]);

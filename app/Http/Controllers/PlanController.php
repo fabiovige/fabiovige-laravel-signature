@@ -28,7 +28,7 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Plan::create($request->all());
     }
 
     /**
