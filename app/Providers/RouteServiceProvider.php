@@ -50,8 +50,8 @@ class RouteServiceProvider extends ServiceProvider
     private function configureVerbs()
     {
         Route::resourceVerbs([
-            'create' => 'inserir',
-            'edit' => 'editar',
+            //'create' => 'inserir',
+            //'edit' => 'editar',
         ]);
     }
 }
