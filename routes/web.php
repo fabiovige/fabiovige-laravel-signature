@@ -9,6 +9,7 @@ use App\Http\Controllers\SignatureController;
 use App\Http\Middleware\TrustProxies;
 use App\Http\Middleware\VerifyCsrfToken;
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/test', [SignatureController::class, 'index']);
+Route::get('/test', function(){
+    $user = User::select('id','name')
+        ->with(['client' => function($query){
+            $query->select('user_id', 'document');
+        }
+        ])->first();
+
+
+    $user = User::select('id','name')
+    ->with('client:user_id,document')->first();
+
+    dd($user->client);
+});
 
 Route::match(['POST', 'PUT', 'GET'],'/routes', fn() => 'teste');
 
